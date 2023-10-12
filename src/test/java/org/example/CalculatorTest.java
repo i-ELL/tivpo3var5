@@ -127,5 +127,14 @@ class CalculatorTest {
 
         assertEquals(expected, calc.mulMatrixWithNum(matrix1, number));
     }
-    
+
+    @Test
+    public void testIntegral(){
+        String x = "x";
+        double lower = 1;
+        double upper = 4;
+        double expected = 7.5;
+        assertEquals(expected, calc.integral(x, lower, upper));
+    }
+
 }
