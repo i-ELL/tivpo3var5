@@ -5,8 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculatorTest {
-    private Calculator calc;
+public class CalculatorTest {
+    private Calculator calc = new Calculator();
 
     @BeforeEach
     public void setUp(){
@@ -26,7 +26,7 @@ class CalculatorTest {
     public void testSub(){
         double first = 7;
         double second = 5;
-        double expected = 0;
+        double expected = 2;
 
         assertEquals(expected, calc.sub(first, second));
     }
@@ -43,8 +43,8 @@ class CalculatorTest {
     @Test
     public void testMul(){
         double first = 6;
-        double second = 1.1;
-        double expected = 6.6;
+        double second = 2;
+        double expected = 12;
 
         assertEquals(expected, calc.mul(first, second));
     }
@@ -66,7 +66,7 @@ class CalculatorTest {
 
         double[] expected = {2, 4};
 
-        assertEquals(expected, calc.equation(a, b, c));
+        assertArrayEquals(expected, calc.equation(a, b, c));
     }
 
     @Test
@@ -74,7 +74,7 @@ class CalculatorTest {
         double [][] matrix = {{1,2}, {3,4}};
         double [][] expected = {{1,3}, {2,4}};
 
-        assertEquals(expected, calc.transposeMatrix(matrix));
+        assertArrayEquals(expected, calc.transposeMatrix(matrix));
     }
 
     @Test
@@ -82,7 +82,7 @@ class CalculatorTest {
         double [][] matrix = {{1,2}, {3,4}};
         double [][] expected = {{-2,1}, {1.5, -0.5}};
 
-        assertEquals(expected, calc.inverseMatrix(matrix));
+        assertArrayEquals(expected, calc.inverseMatrix(matrix));
     }
 
     @Test
@@ -99,7 +99,7 @@ class CalculatorTest {
         double [][] matrix2 = {{9,8}, {7,6}};
         double [][] expected = {{23,20}, {55,48}};
 
-        assertEquals(expected, calc.mulMatrix(matrix1, matrix2));
+        assertArrayEquals(expected, calc.mulMatrix(matrix1, matrix2));
     }
     @Test
     public void testSumMatrix(){
@@ -107,7 +107,8 @@ class CalculatorTest {
         double [][] matrix2 = {{9,8}, {7,6}};
         double [][] expected = {{10,10}, {10,10}};
 
-        assertEquals(expected, calc.subMatrix(matrix1, matrix2));
+        assertArrayEquals(expected, calc.sumMatrix(matrix1, matrix2));
+        //assertEquals(expected, calc.sumMatrix(matrix1, matrix2));
     }
 
     @Test
@@ -116,7 +117,7 @@ class CalculatorTest {
         double [][] matrix2 = {{9,8}, {7,6}};
         double [][] expected = {{-8, -6}, {-4,-2}};
 
-        assertEquals(expected, calc.subMatrix(matrix1, matrix2));
+        assertArrayEquals(expected, calc.subMatrix(matrix1, matrix2));
     }
 
     @Test
@@ -125,7 +126,7 @@ class CalculatorTest {
         double number = 3;
         double [][] expected = {{3,6}, {9,12}};
 
-        assertEquals(expected, calc.mulMatrixWithNum(matrix1, number));
+        assertArrayEquals(expected, calc.mulMatrixWithNum(matrix1, number));
     }
 
     @Test

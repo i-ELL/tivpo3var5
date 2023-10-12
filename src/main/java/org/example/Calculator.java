@@ -52,8 +52,8 @@ public class Calculator {
             double[] ans = new double[2];
             double D = b * b - 4 * a * c;
             if (D >= 0) {
-                ans[0] = (b - Math.sqrt(D)) / a;
-                ans[1] = (b + Math.sqrt(D)) / a;
+                ans[0] = (-b - Math.sqrt(D)) / 2*a;
+                ans[1] = (-b + Math.sqrt(D)) / 2*a;
                 return ans;
             } else {
                 System.out.println("Отрицательный дискреминант");
@@ -216,7 +216,7 @@ public class Calculator {
         double[][] newMatrix = new double[matrix.length][matrix[0].length];
         for (int i =0; i < matrix.length; i++){
             for (int j =0; j < matrix[0].length; j++){
-                newMatrix[i][j] = matrix[j][i] * number;
+                newMatrix[i][j] = matrix[i][j] * number;
             }
         }
         return newMatrix;
