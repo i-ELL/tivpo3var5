@@ -7,61 +7,7 @@ import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.analysis.integration.RombergIntegrator;
 
 public class Calculator {
-    public double sum(double first, double second){
-        return first+second;
-    }
 
-    public double sub(double first, double second){
-        return first-second;
-    }
-
-    public double del(double first, double second){
-        if (second != 0 ) return first/second;
-        else {
-            System.out.println("Попытка деления на 0");
-            return Double.POSITIVE_INFINITY;
-        }
-    }
-
-    public double mul(double first, double second){
-        return first*second;
-    }
-
-    public double degree(double x, double y){
-        return Math.pow(x, y);
-    }
-
-    public double[] equation(double a, double b, double c){
-        if (a==0){
-            if (b==0){
-                if (c == 0){
-                    System.out.println("Бесконечное число решений");
-                    return new double[]{Double.POSITIVE_INFINITY};
-                }
-                else {
-                    System.out.println("Решений нет");
-                    return new double[]{0};
-                }
-            }
-            else {
-                double ans = -c / b;
-                return new double[]{ans};
-            }
-        }
-        else {
-            double[] ans = new double[2];
-            double D = b * b - 4 * a * c;
-            if (D >= 0) {
-                ans[0] = (-b - Math.sqrt(D)) / 2*a;
-                ans[1] = (-b + Math.sqrt(D)) / 2*a;
-                return ans;
-            } else {
-                System.out.println("Отрицательный дискреминант");
-                return new double[]{0};
-            }
-        }
-
-    }
 
     public double[][] transposeMatrix(double[][] matrix){
         double[][] newMatrix = new double[matrix[0].length][matrix.length];
@@ -130,7 +76,6 @@ public class Calculator {
             }
             augmentedMatrix[row][row + n] = 1;
         }
-
         return augmentedMatrix;
     }
 
@@ -158,13 +103,11 @@ public class Calculator {
                 }
             }
         }
-
         for (int row = 0; row < n; row++) {
             for (int column = 0; column < n; column++) {
                 inverseMatrix[row][column] = augmentedMatrix[row][column + n];
             }
         }
-
         return inverseMatrix;
     }
 
@@ -221,54 +164,4 @@ public class Calculator {
         }
         return newMatrix;
     }
-
-    public double integral(String integralExpression, double lowerBound, double upperBound){
-        UnivariateFunction function = (x) -> {
-            // Вычисляем значение функции для каждой точки x
-            double result = 0.0;
-            try {
-                result = Double.parseDouble(integralExpression.replace("x", String.valueOf(x)));
-            } catch (NumberFormatException e) {
-                // Обработка ошибки при некорректном пользовательском вводе
-                System.out.println("Некорректный ввод интеграла.");
-
-            }
-            return result;
-        };
-
-        // Используем объект RombergIntegrator из Apache Commons Math для вычисления интеграла
-        RombergIntegrator integrator = new RombergIntegrator();
-        double integral = integrator.integrate(1000, function, lowerBound, upperBound);
-        return integral;
-    }
-
-    double sin(double arg){
-        return Math.sin(arg);
-    }
-
-    double cos(double arg){
-        return Math.cos(arg);
-    }
-
-    double tan(double arg){
-        return Math.tan(arg);
-    }
-
-    double cotan(double arg){
-        return 1/Math.tan(arg);
-    }
-
-    double atan(double arg){
-        return  Math.toDegrees(Math.atan(arg));
-    }
-
-
-    double acos(double arg){
-        return  Math.toDegrees(Math.acos(arg));
-    }
-
-    double asin(double arg){
-        return Math.toDegrees(Math.asin(arg));
-    }
-
 }
