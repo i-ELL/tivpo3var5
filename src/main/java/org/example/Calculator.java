@@ -259,15 +259,16 @@ public class Calculator {
     }
 
     double atan(double arg){
-        return Math.atan(arg);
+        return  Math.toDegrees(Math.atan(arg));
     }
 
+
     double acos(double arg){
-        return Math.acos(arg);
+        return  Math.toDegrees(Math.acos(arg));
     }
 
     double asin(double arg){
-        return Math.asin(arg);
+        return Math.toDegrees(Math.asin(arg));
     }
 
 }

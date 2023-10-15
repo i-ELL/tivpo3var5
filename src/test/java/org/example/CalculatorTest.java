@@ -135,7 +135,58 @@ public class CalculatorTest {
         double lower = 1;
         double upper = 4;
         double expected = 7.5;
+
         assertEquals(expected, calc.integral(x, lower, upper));
     }
+
+    @Test
+    public void testCos(){
+        double n = 0.25;
+        double expected = 1/ Math.sqrt(2);
+        assertTrue(Math.abs( calc.cos(n* Math.PI) - expected) <= 1e-4);
+    }
+
+    @Test
+    public void testSin(){
+        double n = 0.25;
+        double expected = 1/ Math.sqrt(2);
+        assertTrue(Math.abs( calc.sin(n* Math.PI) - expected) <= 1e-4);
+    }
+
+    @Test
+    public void testTan(){
+        double n = 0.25;
+        double expected = 1;
+        assertTrue(Math.abs( calc.tan(n* Math.PI) - expected) <= 1e-4);
+    }
+
+    @Test
+    public void testcotan(){
+        double n = 0.25;
+        double expected = 1;
+        assertTrue(Math.abs( calc.cotan(n* Math.PI) - expected) <= 1e-4);
+    }
+
+    @Test
+    public void testAsin(){
+        double n = 0.5;
+        double expected = 30;
+        assertEquals(expected, calc.asin(n), 0.000001);
+    }
+
+    @Test
+    public void testAcos(){
+        double n = 0.5;
+        double expected = 60;
+        assertEquals(expected, calc.acos(n), 0.000001);
+    }
+
+    @Test
+    public void testAtan(){
+        double n = 1;
+        double expected = 45;
+        assertEquals(expected, calc.atan(n), 0.000001);
+    }
+
 
 }
